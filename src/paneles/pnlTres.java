@@ -49,7 +49,7 @@ public class pnlTres extends javax.swing.JPanel {
         rutaimagen = "";
         rutafirma = "";
         initComponents();
-
+        //Comentario de Prueba --> Julitza Vera
     }
 
     @SuppressWarnings("unchecked")
