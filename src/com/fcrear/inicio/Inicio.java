@@ -18,6 +18,7 @@ int x, y;
      * Creates new form Inicio
      */
     public Inicio() {
+        //Cambio jose
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
