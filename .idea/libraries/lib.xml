@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/jcalendar-1.3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/mysql-connector-java-8.0.30.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/JPlaceHolder.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/NefAnimacion_V2.1_jdk18.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

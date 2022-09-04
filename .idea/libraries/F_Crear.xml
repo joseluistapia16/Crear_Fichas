@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="F_Crear">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/F_Crear.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
