@@ -36,17 +36,17 @@ public class Validar {
     }
 
     public boolean validarCedula(String cedula, String base, String query) {
-        boolean res = false;       
-       List<Persona> lista = null;
+        boolean res = false;
+        List<Persona> lista = null;
         if (cedula.length() < 10) {
             res = false;
         } else {
-            lista =    consu.allPersona(base, query);
+            lista = consu.allPersona(base, query);
             if (lista.size() < 1) {
                 res = true;
             } else {
                 lista.clear();
-                JOptionPane.showMessageDialog(null, "Cedula ya existe!" );
+                JOptionPane.showMessageDialog(null, "Cedula ya existe!");
                 res = false;
             }
 
@@ -62,7 +62,7 @@ public class Validar {
 
     }
 
-   private boolean isEmail(String valor) {
+    private boolean isEmail(String valor) {
         return validar("^[\\w-\\.]+\\@[\\w\\.-]+\\.[a-z]{2,4}$", valor);
     }
 
@@ -70,6 +70,71 @@ public class Validar {
         Pattern patron = Pattern.compile(expReg);
         Matcher encajador = patron.matcher(valor);
         return encajador.matches();
+    }
+
+    public String validateForm(Persona obj) {
+        String msg = "";
+        if (validateString(obj.getApellido()) == null) {
+            msg = msg + "Apellido ";
+        }
+        if (validateString(obj.getTelefono()) == null) {
+            msg = msg + "Telefono ";
+        }
+        if (validateString(obj.getDireccion()) == null) {
+            msg = msg + "Direccion ";
+        }
+        if (validateString("" + obj.getFecha()) == null) {
+            msg = msg + "Fecha ";
+        }
+        if (validateString("" + obj.getPorcentaje()) == null) {
+            msg = msg + "Porcentaje ";
+        }
+        if (validateString(obj.getRepresentante()) == null) {
+            msg = msg + "Representante ";
+        }
+        if (validateString(obj.getFoto()) == null) {
+            msg = msg + "Foto ";
+        }
+        if (validateString(obj.getFoto_firma())== null) {
+            msg = msg + "Firma ";
+        }
+        return msg;
+    }
+        public String validateForm(String obj[]) {
+        String msg = "";
+        if (validateString(obj[0]) == null) {
+            msg = msg + "Apellido ";
+        }
+        if (validateString(obj[1]) == null) {
+            msg = msg + "Telefono ";
+        }
+        if (validateString(obj[2]) == null) {
+            msg = msg + "Direccion ";
+        }
+        if (validateString(obj[3]) == null) {
+            msg = msg + "Fecha ";
+        }
+        if (validateString(obj[4]) == null) {
+            msg = msg + "Porcentaje ";
+        }
+        if (validateString(obj[5]) == null) {
+            msg = msg + "Representante ";
+        }
+        if (validateString(obj[6]) == null) {
+            msg = msg + "Foto ";
+        }
+        if (validateString( obj[7])== null) {
+            msg = msg + "Firma ";
+        }
+        return msg;
+    }
+
+    public String validateString(String valor) {
+        var cad = valor.trim();
+        if (cad.length() < 1 || cad == null) {
+            cad = null;
+        }
+        return cad;
     }
 
 }

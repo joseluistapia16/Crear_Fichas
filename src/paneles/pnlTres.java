@@ -12,7 +12,9 @@ import com.fcrear.inicio.Inicio;
 import com.fcrear.otros.Cadenas1;
 import com.mysql.jdbc.Driver;
 import com.sun.jdi.connect.spi.Connection;
+import componentes.JOptionPane1;
 import componentes.Tablas;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
@@ -26,6 +28,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 //import javax.swing.JOptionPane;
@@ -482,8 +485,7 @@ public class pnlTres extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {                                
+    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {
         char car = evt.getKeyChar();
         if (cedula.getText().length() >= 10) {
             evt.consume();
@@ -491,7 +493,7 @@ public class pnlTres extends javax.swing.JPanel {
         if ((car < '0' || car > '9')) {
             evt.consume();
         }
-    } 
+    }
     private void txt_nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombresActionPerformed
@@ -609,14 +611,13 @@ public class pnlTres extends javax.swing.JPanel {
     }//GEN-LAST:event_cedulaActionPerformed
 
     private void cedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyReleased
-             if (validar.validarCedula(cedula.getText(), "crear", "select * from persona where cedula='" + cedula.getText() + "'")) {
+        if (validar.validarCedula(cedula.getText(), "crear", "select * from persona where cedula='" + cedula.getText() + "'")) {
             Habilitar(true);
         } else {
             Habilitar(false);
         }
-     
-    }//GEN-LAST:event_cedulaKeyReleased
 
+    }//GEN-LAST:event_cedulaKeyReleased
 
     public void Habilitar(boolean valor) {
         txt_nombres.setEnabled(valor);
@@ -648,6 +649,7 @@ public class pnlTres extends javax.swing.JPanel {
     }
 
     public void guardarformulario() {
+        var valores = new String[8];
         String cedula2 = cedula.getText();
         String apellido1 = txt_nombres.getText();
         String telefono1 = telefono.getText();
@@ -655,9 +657,30 @@ public class pnlTres extends javax.swing.JPanel {
         String fecha1 = ((JTextField) fecha.getDateEditor().getUiComponent()).getText();
         String porcentaje1 = porcentaje.getText();
         String representante1 = representante.getText();
-        Persona c = new Persona(cedula2, apellido1, telefono1, direccion1, Date.valueOf(fecha1), Integer.parseInt(porcentaje1), representante1, rutaimagen, rutafirma);
-        var msg = crd.guardar("crear", c);
-        JOptionPane.showMessageDialog(null, msg);
+        System.out.println("fecha " + fecha1);
+        Persona obj = null;
+        valores[0] = apellido1;
+        valores[1] = telefono1;
+        valores[2] = direccion1;
+        valores[3] = fecha1;
+        valores[4] = porcentaje1;
+        valores[5] = representante1;
+        valores[6] = rutaimagen;
+        valores[7] = rutafirma;
+        var res = validar.validateForm(valores);
+        if ("".equals(res))
+        {
+            obj = new Persona(cedula2, apellido1, telefono1, direccion1,
+                    Date.valueOf(fecha1),
+                    Integer.parseInt(porcentaje1), representante1, rutaimagen, rutafirma);
+            var msg = crd.guardar("crear", obj);
+            JOptionPane.showMessageDialog(null, msg);
+        } else {
+
+            JOptionPane1.visualizaDialogo(null, res, "Datos invalidos!", 3000);
+
+        }
+
     }
 
     public void imagenVacia() {
@@ -720,3 +743,4 @@ public class pnlTres extends javax.swing.JPanel {
     private javax.swing.JTextField txt_nombres;
     // End of variables declaration//GEN-END:variables
 }
+
