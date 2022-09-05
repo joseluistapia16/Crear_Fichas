@@ -4,6 +4,9 @@
  */
 package paneles;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author USER
@@ -14,7 +17,11 @@ public class pnlUno extends javax.swing.JPanel {
      * Creates new form pnlUno
      */
     public pnlUno() {
+        
         initComponents();
+        var fil = "\\Fichas Crear\\img\\crear.jpeg";
+        llenarImagen(fil);
+
     }
 
     /**
@@ -27,40 +34,48 @@ public class pnlUno extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/crear.jpeg"))); // NOI18N
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIconTextGap(10);
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/crear.jpeg")));
+        logo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        logo.setIconTextGap(10);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE)
+                .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 490));
     }// </editor-fold>//GEN-END:initComponents
-
+public void llenarImagen(String fil) {
+        logo.setIcon(new ImageIcon(fil));
+        ImageIcon icon = new ImageIcon(fil);
+        Image img = icon.getImage();
+        Image newimg = img.getScaledInstance(720, 544, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon newIcono = new ImageIcon(newimg);
+        logo.setIcon(newIcono);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel logo;
     // End of variables declaration//GEN-END:variables
 }

@@ -95,12 +95,13 @@ public class Validar {
         if (validateString(obj.getFoto()) == null) {
             msg = msg + "Foto ";
         }
-        if (validateString(obj.getFoto_firma())== null) {
+        if (validateString(obj.getFoto_firma()) == null) {
             msg = msg + "Firma ";
         }
         return msg;
     }
-        public String validateForm(String obj[]) {
+
+    public String validateForm(String obj[]) {
         String msg = "";
         if (validateString(obj[0]) == null) {
             msg = msg + "Apellido ";
@@ -120,10 +121,11 @@ public class Validar {
         if (validateString(obj[5]) == null) {
             msg = msg + "Representante ";
         }
+        System.out.println(validateString(obj[6]) + " foto " + obj[6]);
         if (validateString(obj[6]) == null) {
             msg = msg + "Foto ";
         }
-        if (validateString( obj[7])== null) {
+        if (validateString(obj[7]) == null) {
             msg = msg + "Firma ";
         }
         return msg;

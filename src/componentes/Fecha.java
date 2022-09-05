@@ -1,5 +1,6 @@
 package componentes;
 
+import com.fcrear.dao.Crud;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -161,46 +162,89 @@ public class Fecha {
 
         return gui;
     }
+public static int getIntMesESP(String mes) {
+        mes = mes.toUpperCase();
+        int gui = 0;
 
+        if ("ENERO".equals(mes)) {
+            gui = 01;
+        }
+        if ("FEBRERO".equals(mes)) {
+            gui = 02;
+        }
+        if ("MARZO".equals(mes)) {
+            gui = 03;
+        }
+        if ("ABRIL".equals(mes)) {
+            gui = 04;
+        }
+        if ("MAYO".equals(mes)) {
+            gui = 05;
+        }
+        if ("JUNIO".equals(mes)) {
+            gui = 06;
+        }
+        if ("JULIO".equals(mes)) {
+            gui = 07;
+        }
+        if ("AGOSTO".equals(mes)) {
+            gui = 8;
+        }
+
+        if ("SEPTIEMBRE".equals(mes)) {
+            gui = 9;
+        }
+        if ("OCTUBRE".equals(mes)) {
+            gui = 10;
+        }
+        if ("NOVIEMBRE".equals(mes)) {
+            gui = 11;
+        }
+        if ("DICIEMBRE".equals(mes)) {
+            gui = 12;
+        }
+
+        return gui;
+    }
     public static String getStringMes(int mes) {
 
         String gui = null;
 
         if (mes == 1) {
-            gui = "Enero";
+            gui = "Enero".toUpperCase();
         }
         if (mes == 2) {
-            gui = "Febrero";
+            gui = "Febrero".toUpperCase();
         }
         if (mes == 3) {
-            gui = "Marzo";
+            gui = "Marzo".toUpperCase();
         }
         if (mes == 4) {
-            gui = "Abril";
+            gui = "Abril".toUpperCase();
         }
         if (mes == 5) {
-            gui = "Mayo";
+            gui = "Mayo".toUpperCase();
         }
         if (mes == 6) {
-            gui = "Junio";
+            gui = "Junio".toUpperCase();
         }
         if (mes == 7) {
-            gui = "Julio";
+            gui = "Julio".toUpperCase();
         }
         if (mes == 8) {
-            gui = "Agosto";
+            gui = "Agosto".toUpperCase();
         }
         if (mes == 9) {
-            gui = "Septiembre";
+            gui = "Septiembre".toUpperCase();
         }
         if (mes == 10) {
-            gui = "Octubre";
+            gui = "Octubre".toUpperCase();
         }
         if (mes == 11) {
-            gui = "Noviembre";
+            gui = "Noviembre".toUpperCase();
         }
         if (mes == 12) {
-            gui = "Diciembre";
+            gui = "Diciembre".toUpperCase();
         }
 
         return gui;
@@ -218,16 +262,30 @@ public class Fecha {
 
     public static int comparacionFecha(Date fecha1, Date fecha2) {
         int val = 0;
-        try{
-        val = fecha1.compareTo(fecha2);
-        }catch(Exception e){
-            
+        try {
+            val = fecha1.compareTo(fecha2);
+        } catch (Exception e) {
+
         }
         //  fecha 1 mayor a 2 = -1   // fecha 2 es mayor a fecha 1 = 1 // fecha 1 es igual es fecha 2 = 0
         return val;
     }
 
+    public static Date getDateFecha(String fecha) {
+        java.sql.Date f = null;
+        if (fecha != null || !"".equals(fecha)) {
+            String cad[] = fecha.split("/");
+            try {
+                f = java.sql.Date.valueOf(cad[2] + "-" + getIntMesESP(cad[1]) + "-" + cad[0]);
+            } catch (Exception ex) {
+                System.out.println("Error " + ex);
+                Logger.getLogger(Fecha.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return f;
+        } else {
+            return null;
+        }
 
-
+    }
 
 }

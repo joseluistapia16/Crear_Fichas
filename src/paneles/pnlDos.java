@@ -4,7 +4,6 @@
  */
 package paneles;
 
-
 import com.fcrear.dao.Conectar;
 import com.fcrear.dao.Consultas;
 import com.fcrear.domain.Persona;
@@ -12,7 +11,8 @@ import com.fcrear.inicio.Inicio;
 import componentes.Tablas;
 import java.awt.Window;
 import java.sql.ResultSet;
-import java.sql.*;;
+import java.sql.*;
+;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -22,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author USER
  */
+
+
 public class pnlDos extends javax.swing.JPanel {
 
     Conectar con = new Conectar();
@@ -43,7 +45,6 @@ public class pnlDos extends javax.swing.JPanel {
 //        modeloTablaPersonas = (DefaultTableModel) tabla_personas.getModel();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -213,17 +214,19 @@ public class pnlDos extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaliActionPerformed
 
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
-       pnlTres panel3 = new pnlTres();
-       panel3.setSize(745, 564);
-       panel3.setLocation(0,0);
-       Inicio.pnlPrincipal.removeAll();
-       Inicio.pnlPrincipal.add(panel3);
-       Inicio.pnlPrincipal.revalidate();
-       Inicio.pnlPrincipal.repaint();
+        pnlTres panel3 = new pnlTres();
+        panel3.setSize(745, 564);
+        panel3.setLocation(0, 0);
+        Inicio.pnlPrincipal.removeAll();
+        Inicio.pnlPrincipal.add(panel3);
+        Inicio.pnlPrincipal.revalidate();
+        Inicio.pnlPrincipal.repaint();
     }//GEN-LAST:event_nuevoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
+        campoBuscar.setText("");
+        lista = consu.allPersona("crear", "select * from persona order by apellido");
+        Tablas.cargarPersonas(lista, tabla_personas);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tabla_personasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_personasMousePressed

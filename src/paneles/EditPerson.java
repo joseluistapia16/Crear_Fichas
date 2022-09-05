@@ -7,13 +7,16 @@ package paneles;
 import com.fcrear.dao.Crud;
 import com.fcrear.domain.Persona;
 import componentes.Fecha;
+import componentes.JOptionPane1;
 import componentes.Tablas;
 import java.awt.Image;
 import java.sql.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import validaciones.Validar;
 
 /**
  *
@@ -21,15 +24,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class EditPerson extends javax.swing.JDialog {
 
+    Validar validar = new Validar();
     private Date fecha_nacimento = null;
     Crud crd = new Crud();
-    String rutaimagen,rutafirma;
-    
-  
-    
+    String rutaimagen, rutafirma;
 
     public EditPerson(java.awt.Frame parent, boolean modal) {
-       super(parent, modal);
+        super(parent, modal);
         initComponents();
     }
 
@@ -38,9 +39,9 @@ public class EditPerson extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         Llenar(obj);
+        //System.out.println("imagen " + obj.getFoto() + " " + obj.getFoto_firma());
+        cedula.setEditable(false);
     }
-    
-
 
     public void Llenar(Persona obj) {
         System.out.println(obj.getApellido());
@@ -58,6 +59,9 @@ public class EditPerson extends javax.swing.JDialog {
     }
 
     public void llenarImagen(String fil) {
+        if (fil == null) {
+           fil = "\\Fichas Crear\\img\\sin_imagen.png";
+        }
         foto.setIcon(new ImageIcon(fil));
         ImageIcon icon = new ImageIcon(fil);
         Image img = icon.getImage();
@@ -66,14 +70,18 @@ public class EditPerson extends javax.swing.JDialog {
         foto.setIcon(newIcono);
         rutaimagen = fil;
     }
+
     public void llenarImagenFirma(String fil) {
+
+        if (fil == null) {
+             fil = "\\Fichas Crear\\img\\sin_firma.png";
+        }
         foto_firma.setIcon(new ImageIcon(fil));
         ImageIcon icon = new ImageIcon(fil);
         Image img = icon.getImage();
         Image newimg = img.getScaledInstance(404, 112, java.awt.Image.SCALE_SMOOTH);
         ImageIcon newIcono = new ImageIcon(newimg);
         foto_firma.setIcon(newIcono);
-
         rutafirma = fil;
     }
 
@@ -143,6 +151,8 @@ public class EditPerson extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setText("Nombre del Representante");
 
+        cedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cedulaKeyTyped(evt);
@@ -214,9 +224,9 @@ public class EditPerson extends javax.swing.JDialog {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(porcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(porcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -226,9 +236,9 @@ public class EditPerson extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nacimiento))
+                                .addComponent(nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -245,7 +255,7 @@ public class EditPerson extends javax.swing.JDialog {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(telefono)
                                     .addComponent(direccion))))
-                        .addGap(18, 18, 18)
+                        .addGap(3, 3, 3)
                         .addComponent(b_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
@@ -255,7 +265,7 @@ public class EditPerson extends javax.swing.JDialog {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cedula)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,14 +279,11 @@ public class EditPerson extends javax.swing.JDialog {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(b_nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b_nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -525,7 +532,7 @@ public class EditPerson extends javax.swing.JDialog {
 
         if (cedula.getText().length() >= 10) {
             evt.consume();
-         }  
+        }
     }//GEN-LAST:event_cedulaKeyTyped
 
     private void txt_nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombresActionPerformed
@@ -543,7 +550,11 @@ public class EditPerson extends javax.swing.JDialog {
     }//GEN-LAST:event_telefonoActionPerformed
 
     private void telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyTyped
+        char car = evt.getKeyChar();
         if (telefono.getText().length() >= 10) {
+            evt.consume();
+        }
+        if ((car < '0' || car > '9')) {
             evt.consume();
         }
     }//GEN-LAST:event_telefonoKeyTyped
@@ -555,7 +566,11 @@ public class EditPerson extends javax.swing.JDialog {
     }//GEN-LAST:event_direccionKeyTyped
 
     private void porcentajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_porcentajeKeyTyped
+        char car = evt.getKeyChar();
         if (porcentaje.getText().length() >= 3) {
+            evt.consume();
+        }
+        if ((car < '0' || car > '9')) {
             evt.consume();
         }
     }//GEN-LAST:event_porcentajeKeyTyped
@@ -565,43 +580,61 @@ public class EditPerson extends javax.swing.JDialog {
             evt.consume();
         }// TODO add your handling code here:
     }//GEN-LAST:event_representanteKeyTyped
-    
+
     public void Editar() {
-    String cedula1 = cedula.getText();
-    String apellido1 = txt_nombres.getText();
-    String telefono1 = telefono.getText();
-    String direccion1 = direccion.getText();
-    String porcentaje1 = porcentaje.getText();
-    String representante1 = representante.getText();
-    Persona c = new Persona(cedula1, apellido1, telefono1, direccion1, fecha_nacimento, Integer.parseInt(porcentaje1), representante1, rutaimagen, rutafirma);
-    var msg = crd.editar("crear", c);
-    JOptionPane.showMessageDialog(null, msg);
+        var valores = new String[8];
+        String cedula2 = cedula.getText();
+        String apellido1 = txt_nombres.getText();
+        String telefono1 = telefono.getText();
+        String direccion1 = direccion.getText();
+        String fecha1 = nacimiento.getText();
+        String porcentaje1 = porcentaje.getText();
+        String representante1 = representante.getText();
+  
+        Persona obj = null;
+        valores[0] = apellido1;
+        valores[1] = telefono1;
+        valores[2] = direccion1;
+        valores[3] = fecha1;
+        valores[4] = porcentaje1;
+        valores[5] = representante1;
+        valores[6] = rutaimagen;
+        valores[7] = rutafirma;
+        var res = validar.validateForm(valores);
+        if ("".equals(res)) {
+            var fecha2 = Fecha.getDateFecha(fecha1);
+            obj = new Persona(cedula2, apellido1, telefono1, direccion1, (Date) fecha2,
+                    Integer.parseInt(porcentaje1), representante1, rutaimagen, rutafirma);
+            var msg = crd.editar("crear", obj);
+            JOptionPane.showMessageDialog(null, msg);
+        } else {
+
+            JOptionPane1.visualizaDialogo(null, res, "Datos invalidos!", 3000);
+
+        }
     }
 
-  
+
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
-    Editar();
+        Editar();
     }//GEN-LAST:event_editarActionPerformed
- 
+
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_salirActionPerformed
-   
+
     public void firmaVacia() {
-        String fil = "src\\img\\sin_firma.png";
+        String fil = "\\Fichas Crear\\firma\\";
         foto_firma.setIcon(new ImageIcon(fil));
         ImageIcon icon = new ImageIcon(fil);
         Image img = icon.getImage();
-        System.out.println(fil + " Foto  " + foto_firma.getWidth() + " " + foto_firma.getHeight());
+        //System.out.println(fil + " Foto  " + foto_firma.getWidth() + " " + foto_firma.getHeight());
         Image newimg = img.getScaledInstance(404, 112, java.awt.Image.SCALE_SMOOTH);
         ImageIcon newIcono = new ImageIcon(newimg);
         foto_firma.setIcon(newIcono);
         rutaimagen = fil;
     }
-    
-    
-    
-    
+
     public void sinEditar(boolean valor) {
         cedula.setText(null);
         txt_nombres.setText(null);
@@ -626,8 +659,8 @@ public class EditPerson extends javax.swing.JDialog {
         imagenVacia();
         firmaVacia();
     }
-    
-     public void eliminarpersona() {
+
+    public void eliminarpersona() {
         String cedula1 = cedula.getText();
         Persona c = new Persona(cedula1);
         var msg = crd.eliminar("crear", c);
@@ -636,12 +669,12 @@ public class EditPerson extends javax.swing.JDialog {
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         eliminarpersona();
         sinEditar(false);
-       
+
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void btn_sinimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sinimgActionPerformed
         // TODO add your handling code here:
-//        imagenVacia();
+        imagenVacia();
     }//GEN-LAST:event_btn_sinimgActionPerformed
     private void guardarImagen() {
         String pass = "\\Fichas Crear\\fotos\\";
@@ -664,7 +697,7 @@ public class EditPerson extends javax.swing.JDialog {
 
     }
     private void btn_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imagenActionPerformed
-       guardarImagen();
+        guardarImagen();
     }//GEN-LAST:event_btn_imagenActionPerformed
     private void guardarFirma() {
         String pass = "\\Fichas Crear\\firma\\";
@@ -687,7 +720,7 @@ public class EditPerson extends javax.swing.JDialog {
 
     }
     private void firmaImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firmaImgActionPerformed
-    guardarFirma();    
+        guardarFirma();
     }//GEN-LAST:event_firmaImgActionPerformed
 
     private void editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarMouseClicked
@@ -708,9 +741,8 @@ public class EditPerson extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_b_nacimientoActionPerformed
- public void imagenVacia() {
-        
-        String fil ="\\Users\\sopor\\OneDrive\\Documentos\\NetBeansProjects\\F_Crear\\F_Crear\\src\\img\\sin_imagen.png";
+    public void imagenVacia() {
+        String fil = "\\Fichas Crear\\img\\sin_imagen.png";
         foto.setIcon(new ImageIcon(fil));
         ImageIcon icon = new ImageIcon(fil);
         Image img = icon.getImage();
@@ -720,6 +752,7 @@ public class EditPerson extends javax.swing.JDialog {
         foto.setIcon(newIcono);
         rutaimagen = fil;
     }
+
     /**
      * @param args the command line arguments
      */

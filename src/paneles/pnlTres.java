@@ -126,6 +126,7 @@ public class pnlTres extends javax.swing.JPanel {
 
         fecha.setDateFormatString("yyyy-MM-dd");
 
+        cedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulaActionPerformed(evt);
@@ -140,6 +141,7 @@ public class pnlTres extends javax.swing.JPanel {
             }
         });
 
+        txt_nombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_nombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nombresActionPerformed(evt);
@@ -192,13 +194,13 @@ public class pnlTres extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(porcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -230,7 +232,7 @@ public class pnlTres extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cedula)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -509,7 +511,11 @@ public class pnlTres extends javax.swing.JPanel {
     }//GEN-LAST:event_telefonoActionPerformed
 
     private void telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyTyped
-        if (telefono.getText().length() >= 10) {
+        char car = evt.getKeyChar();
+        if (telefono.getText().length() >= 14) {
+            evt.consume();
+        }
+        if ((car < '0' || car > '9')) {
             evt.consume();
         }
     }//GEN-LAST:event_telefonoKeyTyped
@@ -521,7 +527,11 @@ public class pnlTres extends javax.swing.JPanel {
     }//GEN-LAST:event_direccionKeyTyped
 
     private void porcentajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_porcentajeKeyTyped
+        char car = evt.getKeyChar();
         if (porcentaje.getText().length() >= 3) {
+            evt.consume();
+        }
+        if ((car < '0' || car > '9')) {
             evt.consume();
         }
     }//GEN-LAST:event_porcentajeKeyTyped
@@ -668,8 +678,7 @@ public class pnlTres extends javax.swing.JPanel {
         valores[6] = rutaimagen;
         valores[7] = rutafirma;
         var res = validar.validateForm(valores);
-        if ("".equals(res))
-        {
+        if ("".equals(res)) {
             obj = new Persona(cedula2, apellido1, telefono1, direccion1,
                     Date.valueOf(fecha1),
                     Integer.parseInt(porcentaje1), representante1, rutaimagen, rutafirma);
@@ -743,4 +752,3 @@ public class pnlTres extends javax.swing.JPanel {
     private javax.swing.JTextField txt_nombres;
     // End of variables declaration//GEN-END:variables
 }
-
