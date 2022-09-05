@@ -659,6 +659,9 @@ public class pnlTres extends javax.swing.JPanel {
     }
 
     public void guardarformulario() {
+        if (rutafirma==null || "".equals(rutafirma) ){
+            rutafirma="\\Fichas Crear\\img\\sin_firma.png";
+        }
         var valores = new String[8];
         String cedula2 = cedula.getText();
         String apellido1 = txt_nombres.getText();

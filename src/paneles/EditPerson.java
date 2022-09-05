@@ -60,7 +60,7 @@ public class EditPerson extends javax.swing.JDialog {
 
     public void llenarImagen(String fil) {
         if (fil == null) {
-           fil = "\\Fichas Crear\\img\\sin_imagen.png";
+            fil = "\\Fichas Crear\\img\\sin_imagen.png";
         }
         foto.setIcon(new ImageIcon(fil));
         ImageIcon icon = new ImageIcon(fil);
@@ -74,7 +74,7 @@ public class EditPerson extends javax.swing.JDialog {
     public void llenarImagenFirma(String fil) {
 
         if (fil == null) {
-             fil = "\\Fichas Crear\\img\\sin_firma.png";
+            fil = "\\Fichas Crear\\img\\sin_firma.png";
         }
         foto_firma.setIcon(new ImageIcon(fil));
         ImageIcon icon = new ImageIcon(fil);
@@ -582,6 +582,9 @@ public class EditPerson extends javax.swing.JDialog {
     }//GEN-LAST:event_representanteKeyTyped
 
     public void Editar() {
+        if (rutafirma == null || "".equals(rutafirma)) {
+            rutafirma = "\\Fichas Crear\\img\\sin_firma.png";
+        }
         var valores = new String[8];
         String cedula2 = cedula.getText();
         String apellido1 = txt_nombres.getText();
@@ -590,7 +593,7 @@ public class EditPerson extends javax.swing.JDialog {
         String fecha1 = nacimiento.getText();
         String porcentaje1 = porcentaje.getText();
         String representante1 = representante.getText();
-  
+
         Persona obj = null;
         valores[0] = apellido1;
         valores[1] = telefono1;
@@ -624,7 +627,7 @@ public class EditPerson extends javax.swing.JDialog {
     }//GEN-LAST:event_salirActionPerformed
 
     public void firmaVacia() {
-        String fil = "\\Fichas Crear\\firma\\";
+        String fil = "\\Fichas Crear\\img\\sin_firma.png";
         foto_firma.setIcon(new ImageIcon(fil));
         ImageIcon icon = new ImageIcon(fil);
         Image img = icon.getImage();
