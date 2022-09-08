@@ -30,9 +30,10 @@ public class Consultas {
     Connection connMY = null;
 
     public List<Persona> allPersona(String base, String codsql) {
+        //Cambio final
         List<Persona> lista = new ArrayList<Persona>();
         try {
-            connMY = con.Conexion(base);
+            cn = con.Conexion(base);
             Statement leer = cn.createStatement();
             ResultSet rs = leer.executeQuery(codsql);
             while (rs.next()) {

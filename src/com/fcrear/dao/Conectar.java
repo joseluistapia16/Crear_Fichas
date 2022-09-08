@@ -42,8 +42,8 @@ public class Conectar {
 
            
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error de Conexión a la base de datos");
-            System.exit(0);
+            //System.out.println("Error de Conexión a la base de datos");
+           // System.exit(0);
         }
         return con;
     }
