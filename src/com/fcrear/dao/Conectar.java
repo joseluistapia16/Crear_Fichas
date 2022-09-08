@@ -17,7 +17,7 @@ public class Conectar {
     private static final String url = "jdbc:mysql://localhost:3306/crear?autoReconnect=true&useSSL=false";
     private static final String user = "root"; 
     private static final String driver = "com.mysql.cj.jdbc.Driver";
-    private static final String pass = "1234";
+    private static final String pass = "root";
     
     Connection Conect = null;
     public Connection Conexion(String base) {
@@ -25,7 +25,7 @@ public class Conectar {
             Class.forName("com.mysql.jdbc.Driver");
             String str = "jdbc:mysql://192.168.0.14:3306/" + base + "?zeroDateTimeBehavior=convertToNull"; //Ip Local Lenovo Mayra
            str = "jdbc:mysql://localhost:3306/" + base + "?zeroDateTimeBehavior=convertToNull"; //Ip maquina ACER JOSE
-            Conect = DriverManager.getConnection(str, "root", "1234");
+            Conect = DriverManager.getConnection(str, "root", "root");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "No hay Conexion!!");
             java.util.logging.Logger.getLogger(Conectar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

@@ -6,6 +6,7 @@ package paneles;
 
 import com.fcrear.dao.Conectar;
 import com.fcrear.dao.Consultas;
+import com.fcrear.dao.Crud;
 import com.fcrear.domain.Persona;
 import com.fcrear.inicio.Inicio;
 import componentes.Tablas;
@@ -13,6 +14,10 @@ import java.awt.Window;
 import java.sql.ResultSet;
 import java.sql.*;
 ;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -30,11 +35,13 @@ public class pnlDos extends javax.swing.JPanel {
     java.sql.Connection cn = con.conexion();
     List<Persona> lista = null;
     Consultas consu = new Consultas();
+    Crud crd = null;
 //    private Vector<Persona> vectorPersonas;
 //    private DefaultTableModel modeloTablaPersonas;
 //    
 
     public pnlDos() {
+        crd = new Crud();
         initComponents();
 
         lista = consu.allPersona("crear", "select * from persona order by apellido");
@@ -92,6 +99,11 @@ public class pnlDos extends javax.swing.JPanel {
         jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/iconButton/imprimir.png"))); // NOI18N
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/iconButton/imprimir1.png"))); // NOI18N
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnSali.setFont(new java.awt.Font("Louis George Cafe", 1, 18)); // NOI18N
         btnSali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconButton/cerrar (3).png"))); // NOI18N
@@ -259,6 +271,13 @@ public class pnlDos extends javax.swing.JPanel {
     private void nuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoMouseClicked
 
     }//GEN-LAST:event_nuevoMouseClicked
+public void imprimirPdf() {
+        var msg = crd.generarpdf("crear");
+        JOptionPane.showMessageDialog(null, msg);
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        imprimirPdf();
+    }//GEN-LAST:event_jButton1ActionPerformed
     public Persona devuelveObjeto(String cedula, List<Persona> listaobj) {
         Persona objeto1 = null;
         for (int i = 0; i < listaobj.size(); i++) {
