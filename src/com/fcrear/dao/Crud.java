@@ -124,13 +124,13 @@ public class Crud {
         var msg = "";
         try {
 
-            String ruta = System.getProperty("user.home");
-            System.out.println("rutita " + ruta);
+            //String ruta = System.getProperty("user.home");
+           // System.out.println("rutita " + ruta);
             PdfWriter.getInstance(documento, new FileOutputStream("\\Fichas Crear\\reportes\\ReporteCrear.pdf"));
             //Orientación de la página:
             documento.setPageSize(PageSize.A4.rotate());
             //Ruta de la imagen del Encabezado:
-            Image header = Image.getInstance("src/img/header.png");
+            Image header = Image.getInstance("\\Fichas Crear\\img\\header.png");
             //Alineación y Tamaño de la imagen del encabezado
             header.scaleToFit(600, 2000);
             header.setAlignment(Chunk.ALIGN_CENTER);
@@ -199,6 +199,7 @@ public class Crud {
             documento.close();
         } catch (DocumentException | HeadlessException | FileNotFoundException e) {
             System.out.println("Error al crear el pdf " + e);
+            msg=""+e;
             java.util.logging.Logger.getLogger(Conectar.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } catch (IOException e) {
             System.out.println("Error en la Imagen");
