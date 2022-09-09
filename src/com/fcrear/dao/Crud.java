@@ -6,6 +6,21 @@ package com.fcrear.dao;
 
 import com.fcrear.dao.Conectar;
 import com.fcrear.domain.Persona;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.HeadlessException;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
@@ -104,6 +119,92 @@ public class Crud {
         return msg;
     }
     
+    public String generarpdf(String base) {
+        Document documento = new Document();
+        var msg = "";
+        try {
+
+            String ruta = System.getProperty("user.home");
+            System.out.println("rutita " + ruta);
+            PdfWriter.getInstance(documento, new FileOutputStream("\\Fichas Crear\\reportes\\ReporteCrear.pdf"));
+            //Orientación de la página:
+            documento.setPageSize(PageSize.A4.rotate());
+            //Ruta de la imagen del Encabezado:
+            Image header = Image.getInstance("src/img/header.png");
+            //Alineación y Tamaño de la imagen del encabezado
+            header.scaleToFit(600, 2000);
+            header.setAlignment(Chunk.ALIGN_CENTER);
+            //Alineacion de los párrafos
+            Paragraph parrafo = new Paragraph();
+            parrafo.setAlignment(Paragraph.ALIGN_CENTER);
+            //Contenido del párrafo
+            parrafo.add("Juntos por la Inclusión\n\n");
+            parrafo.setFont(FontFactory.getFont("Tahoma", 18, Font.BOLD, BaseColor.ORANGE));
+            parrafo.add("Beneficiarios Registrados \n\n");
+            //Contenido de la firma del responsable
+            Paragraph firma = new Paragraph();
+            firma.setAlignment(Paragraph.ALIGN_CENTER);
+            firma.add("\n\n");
+            firma.add("_____________________________\n");
+            firma.add("Firma Responsable");
+            firma.setFont(FontFactory.getFont("Tahoma", 12, Font.BOLD, BaseColor.BLACK));
+
+            documento.open();
+
+            //Orden de los elementos
+            documento.add(header);
+            documento.add(parrafo);
+
+            PdfPTable tabla = new PdfPTable(7);
+            //TAMAÑO DE LAS COLUMNAS INDIVIDUAL
+            tabla.setWidths(new int[]{4, 6, 4, 8, 4, 4, 6});
+            tabla.setWidthPercentage(100); //TAMAÑO COLUMNAS GENERAL
+            tabla.setSpacingBefore(0f);
+            tabla.setSpacingAfter(0f);
+
+            tabla.addCell("Cédula");
+            tabla.addCell("Nombres Completos");
+            tabla.addCell("Teléfono");
+            tabla.addCell("Dirección");
+            tabla.addCell("Fecha de Nacimiento");
+            tabla.addCell("Porcentaje Discapacidad");
+            tabla.addCell("Nombre Representante");
+
+            try {
+                String sql = "SELECT cedula, apellido, telefono, direccion, fecha, porcentaje, representante FROM persona";
+                conect = con.Conexion(base);
+                PreparedStatement statement = conect.prepareStatement(sql);
+                ResultSet rs = statement.executeQuery();
+
+                if (rs.next()) {
+                    msg = "REPORTE CREADO!";
+                    do {
+
+                        tabla.addCell(rs.getString(1));
+                        tabla.addCell(rs.getString(2));
+                        tabla.addCell(rs.getString(3));
+                        tabla.addCell(rs.getString(4));
+                        tabla.addCell(rs.getString(5));
+                        tabla.addCell(rs.getString(6));
+                        tabla.addCell(rs.getString(7));
+                    } while (rs.next());
+
+                    documento.add(tabla);
+                    documento.add(firma);
+                }
+
+            } catch (DocumentException | SQLException e) {
+                System.out.println("Error en la conexión ");
+            }
+            documento.close();
+        } catch (DocumentException | HeadlessException | FileNotFoundException e) {
+            System.out.println("Error al crear el pdf " + e);
+            java.util.logging.Logger.getLogger(Conectar.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
+        } catch (IOException e) {
+            System.out.println("Error en la Imagen");
+        }
+        return msg;
+    }
 
 }
 
