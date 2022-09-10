@@ -272,8 +272,12 @@ public class pnlDos extends javax.swing.JPanel {
     }//GEN-LAST:event_nuevoMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        var msg = crud.generarpdf("crear");
+        var msg = crud.generarpdf(tabla_personas);
         JOptionPane.showMessageDialog(null, msg);
+        Visor visor = new Visor();
+        visor.setVisible(true);
+        visor.Openpdf("\\Fichas Crear\\reportes\\ReporteCrear.pdf");
+
     }//GEN-LAST:event_jButton1ActionPerformed
     public Persona devuelveObjeto(String cedula, List<Persona> listaobj) {
         Persona objeto1 = null;
