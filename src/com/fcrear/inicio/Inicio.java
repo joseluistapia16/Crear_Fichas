@@ -166,7 +166,7 @@ int x, y;
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(128, 128, 131));
-        jLabel3.setText("ITSG");
+        jLabel3.setText("ISTG");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
