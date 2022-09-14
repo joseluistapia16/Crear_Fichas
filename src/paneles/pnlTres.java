@@ -80,6 +80,7 @@ public class pnlTres extends javax.swing.JPanel {
         lblurl2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         salir = new javax.swing.JButton();
+        sinfirma = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(245, 204, 88));
 
@@ -376,6 +377,16 @@ public class pnlTres extends javax.swing.JPanel {
             }
         });
 
+        sinfirma.setBackground(new java.awt.Color(204, 255, 255));
+        sinfirma.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 18)); // NOI18N
+        sinfirma.setText("Sin Firma");
+        sinfirma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sinfirma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sinfirmaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -411,17 +422,18 @@ public class pnlTres extends javax.swing.JPanel {
                         .addComponent(btn_sinimg)
                         .addGap(129, 129, 129))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(firmaImg, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(196, 196, 196))
-                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(firmaImg, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(sinfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                     .addContainerGap(661, Short.MAX_VALUE)
@@ -441,8 +453,10 @@ public class pnlTres extends javax.swing.JPanel {
                             .addComponent(btn_sinimg, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(firmaImg, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(firmaImg, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sinfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -459,7 +473,7 @@ public class pnlTres extends javax.swing.JPanel {
                         .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addComponent(lblurl2)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                     .addContainerGap(431, Short.MAX_VALUE)
@@ -474,9 +488,9 @@ public class pnlTres extends javax.swing.JPanel {
             .addGap(0, 1092, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 3, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 3, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -646,6 +660,10 @@ public class pnlTres extends javax.swing.JPanel {
         form.setVisible(true);
     }//GEN-LAST:event_salirActionPerformed
 
+    private void sinfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sinfirmaActionPerformed
+    firmaVacia();
+    }//GEN-LAST:event_sinfirmaActionPerformed
+
     public void Habilitar(boolean valor) {
         txt_nombres.setEnabled(valor);
         telefono.setEnabled(valor);
@@ -726,7 +744,7 @@ public class pnlTres extends javax.swing.JPanel {
     }
 
     public void firmaVacia() {
-        String fil = "src\\img\\sin_firma.png";
+        String fil = "\\Fichas Crear\\img\\sin_firma.png";
         foto_firma.setIcon(new ImageIcon(fil));
         ImageIcon icon = new ImageIcon(fil);
         Image img = icon.getImage();
@@ -769,6 +787,7 @@ public class pnlTres extends javax.swing.JPanel {
     private javax.swing.JTextField porcentaje;
     private javax.swing.JTextField representante;
     private javax.swing.JButton salir;
+    private javax.swing.JButton sinfirma;
     private javax.swing.JTextField telefono;
     private javax.swing.JTextField txt_nombres;
     // End of variables declaration//GEN-END:variables
