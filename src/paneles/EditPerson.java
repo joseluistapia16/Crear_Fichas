@@ -14,7 +14,6 @@ import java.sql.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import validaciones.Validar;
 
@@ -122,8 +121,10 @@ public class EditPerson extends javax.swing.JDialog {
         lblurl1 = new javax.swing.JLabel();
         lblurl2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        imprimir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Fundación Crear - Gestión de Información");
 
         jPanel10.setBackground(new java.awt.Color(245, 204, 88));
 
@@ -151,7 +152,7 @@ public class EditPerson extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setText("Nombre del Representante");
 
-        cedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -159,6 +160,7 @@ public class EditPerson extends javax.swing.JDialog {
             }
         });
 
+        txt_nombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_nombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nombresActionPerformed(evt);
@@ -170,6 +172,7 @@ public class EditPerson extends javax.swing.JDialog {
             }
         });
 
+        telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 telefonoActionPerformed(evt);
@@ -181,6 +184,7 @@ public class EditPerson extends javax.swing.JDialog {
             }
         });
 
+        direccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         direccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 direccionKeyTyped(evt);
@@ -194,6 +198,7 @@ public class EditPerson extends javax.swing.JDialog {
             }
         });
 
+        representante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         representante.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 representanteKeyTyped(evt);
@@ -204,7 +209,7 @@ public class EditPerson extends javax.swing.JDialog {
         jLabel8.setText("%");
 
         nacimiento.setEditable(false);
-        nacimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         nacimiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         b_nacimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -298,6 +303,7 @@ public class EditPerson extends javax.swing.JDialog {
 
         editar.setBackground(new java.awt.Color(255, 204, 204));
         editar.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        editar.setIcon(new javax.swing.ImageIcon("C:\\Fichas Crear\\img\\ic_modificar.png")); // NOI18N
         editar.setText("Editar");
         editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         editar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -313,6 +319,7 @@ public class EditPerson extends javax.swing.JDialog {
 
         salir.setBackground(new java.awt.Color(255, 204, 204));
         salir.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salida.png"))); // NOI18N
         salir.setText("Salir");
         salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -323,6 +330,7 @@ public class EditPerson extends javax.swing.JDialog {
 
         eliminar.setBackground(new java.awt.Color(255, 204, 204));
         eliminar.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        eliminar.setIcon(new javax.swing.ImageIcon("C:\\Fichas Crear\\img\\ic_eliminar.png")); // NOI18N
         eliminar.setText("Eliminar");
         eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -399,16 +407,15 @@ public class EditPerson extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 102, 102));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("DATOS PERSONALES");
+        jLabel9.setText("FUNDACIÓN CREAR - GESTIÓN DE INFORMACIÓN");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,6 +426,22 @@ public class EditPerson extends javax.swing.JDialog {
 
         jLabel12.setText("jLabel10");
 
+        imprimir.setBackground(new java.awt.Color(255, 204, 204));
+        imprimir.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        imprimir.setIcon(new javax.swing.ImageIcon("C:\\Fichas Crear\\img\\imprimir.png")); // NOI18N
+        imprimir.setText("Imprimir Ficha");
+        imprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imprimir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imprimirMouseClicked(evt);
+            }
+        });
+        imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -426,7 +449,7 @@ public class EditPerson extends javax.swing.JDialog {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(35, 35, 35)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addContainerGap()
@@ -435,13 +458,16 @@ public class EditPerson extends javax.swing.JDialog {
                         .addGap(58, 58, 58)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblurl1)
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblurl2))))
+                            .addComponent(lblurl2)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(imprimir)
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
@@ -485,16 +511,22 @@ public class EditPerson extends javax.swing.JDialog {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblurl1)
-                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(lblurl1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)))
                         .addComponent(lblurl2)))
                 .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,21 +540,15 @@ public class EditPerson extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1082, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 613, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -609,7 +635,7 @@ public class EditPerson extends javax.swing.JDialog {
             obj = new Persona(cedula2, apellido1, telefono1, direccion1, (Date) fecha2,
                     Integer.parseInt(porcentaje1), representante1, rutaimagen, rutafirma);
             var msg = crd.editar("crear", obj);
-            JOptionPane.showMessageDialog(null, msg);
+            JOptionPane.showMessageDialog(null, msg,"Fundación Crear",1);
         } else {
 
             JOptionPane1.visualizaDialogo(null, res, "Datos invalidos!", 3000);
@@ -659,6 +685,7 @@ public class EditPerson extends javax.swing.JDialog {
         firmaImg.setEnabled(valor);
         b_nacimiento.setEnabled(valor);
         eliminar.setEnabled(valor);
+        imprimir.setEnabled(valor);
         imagenVacia();
         firmaVacia();
     }
@@ -667,11 +694,20 @@ public class EditPerson extends javax.swing.JDialog {
         String cedula1 = cedula.getText();
         Persona c = new Persona(cedula1);
         var msg = crd.eliminar("crear", c);
-        JOptionPane.showMessageDialog(null, msg);
+        JOptionPane.showMessageDialog(null, msg,"Fundación Crear",1);
     }
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        eliminarpersona();
+            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el registro?", "Advertencia",
+        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        eliminarpersona();  
         sinEditar(false);
+       
+} else {
+    // no option
+}
+        
+        
+        
 
     }//GEN-LAST:event_eliminarActionPerformed
 
@@ -744,6 +780,24 @@ public class EditPerson extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_b_nacimientoActionPerformed
+
+    private void imprimirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imprimirMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_imprimirMouseClicked
+
+    public void imprimirficha() {
+        String cedula1 = cedula.getText();
+        Persona c = new Persona(cedula1);
+        var msg = crd.generarFicha1("crear", c);
+        JOptionPane.showMessageDialog(null, msg);
+        this.setVisible(false);
+    }
+    private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
+    imprimirficha();
+    Visor visor = new Visor();
+    visor.setVisible(true);
+    visor.Openpdf("\\Fichas Crear\\reportes\\fichaCrear.pdf");
+    }//GEN-LAST:event_imprimirActionPerformed
     public void imagenVacia() {
         String fil = "\\Fichas Crear\\img\\sin_imagen.png";
         foto.setIcon(new ImageIcon(fil));
@@ -809,6 +863,7 @@ public class EditPerson extends javax.swing.JDialog {
     private javax.swing.JButton firmaImg;
     private javax.swing.JLabel foto;
     private javax.swing.JLabel foto_firma;
+    public javax.swing.JButton imprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;

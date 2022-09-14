@@ -200,6 +200,108 @@ public class Crud {
         return msg;
     }
     
+    public String generarFicha1(String base, Persona obj) {
+    Document documento3  = new Document();
+    var msg="";
+    try {
+
+        //String ruta = System.getProperty("user.home");
+       
+        String destino = "\\Fichas Crear\\reportes\\fichaCrear.pdf";
+        
+        PdfWriter.getInstance(documento3, new FileOutputStream(destino));
+        
+        //Orientación de la página:
+        documento3.setPageSize(PageSize.A4);
+        documento3.setMargins(50, 50, 20, 20);
+        Image header = Image.getInstance("\\Fichas Crear\\img\\header_ind.png");
+       
+        header.scaleToFit(500, 700);
+        header.setAlignment(Chunk.ALIGN_CENTER);
+        //Alineacion de los encabezados
+        
+        
+        Paragraph titulo = new Paragraph();
+        Paragraph subtitulo1 = new Paragraph();
+        Paragraph subtitulo2 = new Paragraph();
+        Paragraph datos = new Paragraph();
+        Paragraph firma = new Paragraph();
+        
+        
+        titulo.setFont(FontFactory.getFont("Tahoma", 18, Font.BOLD, BaseColor.BLACK));
+        subtitulo2.setFont(FontFactory.getFont("Tahoma", 18, Font.BOLD, BaseColor.ORANGE));
+        firma.setFont(FontFactory.getFont("Tahoma", 12, Font.BOLD, BaseColor.BLACK));
+        
+        titulo.add("FUNDACIÓN CREAR \n\n");
+        subtitulo1.add("Juntos por la Inclusión\n");
+        subtitulo1.add("Dirección: Calle 34ava y Callejón Maldonado 5221\n\n");
+        subtitulo2.add("Datos Personales \n\n");
+        firma.add("_____________________________\n");
+        firma.add("Firma Beneficiario");
+      
+        
+        titulo.setAlignment (Paragraph.ALIGN_CENTER);
+        subtitulo1.setAlignment (Paragraph.ALIGN_CENTER);
+        subtitulo2.setAlignment (Paragraph.ALIGN_CENTER);
+        firma.setAlignment (Paragraph.ALIGN_CENTER);
+        
+        
+        documento3.open();
+                
+        try{
+        String sql = "SELECT * FROM persona where cedula=?";
+        conect=con.Conexion(base);
+        PreparedStatement statement = conect.prepareStatement(sql);
+        statement.setString(1, obj.getCedula());
+        ResultSet rs = statement.executeQuery();
+        if (rs.next()){
+        msg="Ficha de beneficiario generada con éxito!";
+            do{
+                                   
+                datos.add("\n\nCédula: "+(rs.getString("cedula"))+"\n\n");
+                datos.add("Nombres y Apellidos: "+(rs.getString("apellido"))+"\n\n");
+                datos.add("Teléfono: "+(rs.getString("telefono"))+"\n\n");
+                datos.add("Dirección: "+(rs.getString("direccion"))+"\n\n");
+                datos.add("Fecha: "+(rs.getString("fecha"))+"\n\n");
+                datos.add("Porcentaje de Discapacidad: "+(rs.getString("porcentaje"))+"%\n\n");
+                datos.add("Nombre del Representante Legal: "+(rs.getString("representante"))+"\n\n\n");
+                
+               
+                
+                Image foto = Image.getInstance(rs.getString("foto"));
+                Image foto_firma = Image.getInstance(rs.getString("foto_firma"));
+                foto.scaleToFit(200, 100);
+                foto.setAlignment(Chunk.ALIGN_CENTER);
+               
+                
+                foto_firma.scaleToFit(150, 70);
+                foto_firma.setAlignment(Chunk.ALIGN_CENTER);
+                
+                documento3.add(header);
+                documento3.add(titulo);
+                documento3.add(subtitulo1);
+                documento3.add(subtitulo2);
+                documento3.add(foto);
+                documento3.add(datos);
+                documento3.add(foto_firma);
+                documento3.add(firma);
+                
+            }while(rs.next());
+        }documento3.close();
+
+        
+    }catch(DocumentException | SQLException e){
+        System.out.println("Error en la conexión ");
+    }
+    } catch (DocumentException | HeadlessException | FileNotFoundException  e){
+        System.out.println("Error al crear el pdf "+ e);
+    }catch(IOException e){
+        System.out.println("Error en la Imagen");
+    }
+    return msg;
+    }
+    
+    
     
 }
 

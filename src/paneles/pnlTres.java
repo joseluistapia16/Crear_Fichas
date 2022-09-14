@@ -4,35 +4,19 @@
  */
 package paneles;
 
-import BaseImagen.Conexion;
-import com.fcrear.dao.Conectar;
+
+
 import com.fcrear.dao.Crud;
 import com.fcrear.domain.Persona;
 import com.fcrear.inicio.Inicio;
-import com.fcrear.otros.Cadenas1;
-import com.mysql.jdbc.Driver;
-import com.sun.jdi.connect.spi.Connection;
 import componentes.JOptionPane1;
 import componentes.Tablas;
-import java.awt.Component;
 import java.awt.Image;
 import java.awt.Window;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-//import javax.swing.JOptionPane;
-//import java.util.Date;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -81,7 +65,7 @@ public class pnlTres extends javax.swing.JPanel {
         representante = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         grabar = new javax.swing.JButton();
-        salir = new javax.swing.JButton();
+        consultar = new javax.swing.JButton();
         nuevo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         foto = new javax.swing.JLabel();
@@ -95,6 +79,7 @@ public class pnlTres extends javax.swing.JPanel {
         lblurl1 = new javax.swing.JLabel();
         lblurl2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        salir = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(245, 204, 88));
 
@@ -264,6 +249,7 @@ public class pnlTres extends javax.swing.JPanel {
 
         grabar.setBackground(new java.awt.Color(255, 204, 204));
         grabar.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        grabar.setIcon(new javax.swing.ImageIcon("C:\\Fichas Crear\\img\\ic_grabar.png")); // NOI18N
         grabar.setText("Grabar");
         grabar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         grabar.addActionListener(new java.awt.event.ActionListener() {
@@ -272,19 +258,21 @@ public class pnlTres extends javax.swing.JPanel {
             }
         });
 
-        salir.setBackground(new java.awt.Color(255, 204, 204));
-        salir.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
-        salir.setText("Salir");
-        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        salir.addActionListener(new java.awt.event.ActionListener() {
+        consultar.setBackground(new java.awt.Color(255, 204, 204));
+        consultar.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        consultar.setIcon(new javax.swing.ImageIcon("C:\\Fichas Crear\\img\\ic_consultas.png")); // NOI18N
+        consultar.setText("Consultar");
+        consultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
+                consultarActionPerformed(evt);
             }
         });
 
         nuevo.setBackground(new java.awt.Color(255, 204, 204));
         nuevo.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
-        nuevo.setText("Nuevo");
+        nuevo.setIcon(new javax.swing.ImageIcon("C:\\Fichas Crear\\img\\ic_eliminar.png")); // NOI18N
+        nuevo.setText("Borrar campos");
         nuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -360,16 +348,13 @@ public class pnlTres extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 102, 102));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("DATOS PERSONALES");
+        jLabel9.setText("FUNDACIÓN CREAR - REGISTRO DE INFORMACIÓN");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,6 +364,17 @@ public class pnlTres extends javax.swing.JPanel {
         );
 
         jLabel12.setText("jLabel10");
+
+        salir.setBackground(new java.awt.Color(255, 204, 204));
+        salir.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        salir.setIcon(new javax.swing.ImageIcon("C:\\Fichas Crear\\img\\salida.png")); // NOI18N
+        salir.setText("Salir");
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -397,12 +393,16 @@ public class pnlTres extends javax.swing.JPanel {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblurl1)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblurl2))))
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblurl2)
+                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                        .addComponent(grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(nuevo)))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(consultar)
+                                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
@@ -451,11 +451,13 @@ public class pnlTres extends javax.swing.JPanel {
                         .addGap(27, 27, 27)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(lblurl1)
-                        .addGap(18, 18, 18)
+                        .addGap(11, 11, 11)
+                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
                         .addComponent(lblurl2)))
                 .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,7 +471,7 @@ public class pnlTres extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1086, Short.MAX_VALUE)
+            .addGap(0, 1092, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -478,7 +480,7 @@ public class pnlTres extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 613, Short.MAX_VALUE)
+            .addGap(0, 624, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -512,7 +514,7 @@ public class pnlTres extends javax.swing.JPanel {
 
     private void telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyTyped
         char car = evt.getKeyChar();
-        if (telefono.getText().length() >= 14) {
+        if (telefono.getText().length() >= 10) {
             evt.consume();
         }
         if ((car < '0' || car > '9')) {
@@ -545,21 +547,28 @@ public class pnlTres extends javax.swing.JPanel {
     private void grabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grabarActionPerformed
         guardarformulario();
     }//GEN-LAST:event_grabarActionPerformed
-
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        // TODO add your handling code here:
-        Window w = SwingUtilities.getWindowAncestor(pnlTres.this);
-        w.setVisible(true);
-        Inicio form = new Inicio();
-        form.setVisible(true);
-    }//GEN-LAST:event_salirActionPerformed
+    
+    private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
+        pnlDos panel2 = new pnlDos();
+        panel2.setSize(745, 564);
+        panel2.setLocation(0, 0);
+        Inicio.pnlPrincipal.removeAll();
+        Inicio.pnlPrincipal.add(panel2);
+        Inicio.pnlPrincipal.revalidate();
+        Inicio.pnlPrincipal.repaint();
+    }//GEN-LAST:event_consultarActionPerformed
 
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Está seguro que desea limpiar los campos?", "Advertencia",
+        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
         limpiar1();
         imagenVacia();
         firmaVacia();
-        JOptionPane.showMessageDialog(null, "LIMPIEZA DE CAMPOS EXITOSA!");
+        JOptionPane.showMessageDialog(null, "Limpieza de campos exitosa!","Fundación Crear",1);
+} else {
+    // no option
+}
+        
     }//GEN-LAST:event_nuevoActionPerformed
 
     private void btn_sinimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sinimgActionPerformed
@@ -592,7 +601,8 @@ public class pnlTres extends javax.swing.JPanel {
     }
 
     private void guardarFirma() {
-        String pass = "\\Fichas Crear\\firma\\";
+        String pass = "src\\fotos\\";
+        //String pass = "\\Fichas Crear\\firma\\";
         //String pass = "\\Users\\TapiaSoftware\\Documents\\NetBeansProjects\\HermanosJesus\\src\\pictures\\";
         JFileChooser dlg = new JFileChooser(pass);
         dlg.setFileFilter(new FileNameExtensionFilter("Archivos de imagen", "tif", "jpg", "jpeg", "png", "gif"));
@@ -629,6 +639,13 @@ public class pnlTres extends javax.swing.JPanel {
 
     }//GEN-LAST:event_cedulaKeyReleased
 
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        Window w = SwingUtilities.getWindowAncestor(pnlTres.this);
+        w.setVisible(true);
+        Inicio form = new Inicio();
+        form.setVisible(true);
+    }//GEN-LAST:event_salirActionPerformed
+
     public void Habilitar(boolean valor) {
         txt_nombres.setEnabled(valor);
         telefono.setEnabled(valor);
@@ -660,7 +677,7 @@ public class pnlTres extends javax.swing.JPanel {
 
     public void guardarformulario() {
         if (rutafirma==null || "".equals(rutafirma) ){
-            rutafirma="\\Fichas Crear\\img\\sin_firma.png";
+            rutafirma="\\src\\img\\sin_firma.png";
         }
         var valores = new String[8];
         String cedula2 = cedula.getText();
@@ -686,7 +703,7 @@ public class pnlTres extends javax.swing.JPanel {
                     Date.valueOf(fecha1),
                     Integer.parseInt(porcentaje1), representante1, rutaimagen, rutafirma);
             var msg = crd.guardar("crear", obj);
-            JOptionPane.showMessageDialog(null, msg);
+            JOptionPane.showMessageDialog(null, msg,"Fundación Crear",1);
         } else {
 
             JOptionPane1.visualizaDialogo(null, res, "Datos invalidos!", 3000);
@@ -696,8 +713,8 @@ public class pnlTres extends javax.swing.JPanel {
     }
 
     public void imagenVacia() {
-
-        String fil = "\\Users\\sopor\\OneDrive\\Documentos\\NetBeansProjects\\F_Crear\\F_Crear\\src\\img\\sin_imagen.png";
+        String fil = "\\Fichas Crear\\img\\sin_imagen.png";
+        //String fil = "\\Users\\sopor\\OneDrive\\Documentos\\NetBeansProjects\\F_Crear\\F_Crear\\src\\img\\sin_imagen.png";
         foto.setIcon(new ImageIcon(fil));
         ImageIcon icon = new ImageIcon(fil);
         Image img = icon.getImage();
@@ -724,6 +741,7 @@ public class pnlTres extends javax.swing.JPanel {
     private javax.swing.JButton btn_imagen;
     private javax.swing.JButton btn_sinimg;
     private javax.swing.JTextField cedula;
+    private javax.swing.JButton consultar;
     private javax.swing.JTextField direccion;
     private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JButton firmaImg;
